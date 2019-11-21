@@ -1,0 +1,6 @@
+brusta-go
+libmodel.so
+
+*.pth
+
+vendor/
