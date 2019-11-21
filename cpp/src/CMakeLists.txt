@@ -1,6 +1,7 @@
 include_directories(include ../includes)
 
-add_executable(BrustaCPlusPlus 
-		jsoncpp.cpp
+find_package(jsoncpp CONFIG REQUIRED)
+add_executable(BrustaCPlusPlus
 		main.cpp
-)
+		handler.cpp predict.cpp)
+target_link_libraries(BrustaCPlusPlus PRIVATE jsoncpp_lib)
