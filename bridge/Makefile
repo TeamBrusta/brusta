@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.14.3/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/harryhong/Workspace/hackathon/naver_hackday/brusta/bridge
+CMAKE_SOURCE_DIR = /Users/harryhong/workspace/hackathon/naver_hackday/brusta-work-env/src/brusta/bridge
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/harryhong/Workspace/hackathon/naver_hackday/brusta/bridge
+CMAKE_BINARY_DIR = /Users/harryhong/workspace/hackathon/naver_hackday/brusta-work-env/src/brusta/bridge
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/harryhong/Workspace/hackathon/naver_hackday/brusta/bridge/CMakeFiles /Users/harryhong/Workspace/hackathon/naver_hackday/brusta/bridge/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/harryhong/workspace/hackathon/naver_hackday/brusta-work-env/src/brusta/bridge/CMakeFiles /Users/harryhong/workspace/hackathon/naver_hackday/brusta-work-env/src/brusta/bridge/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/harryhong/Workspace/hackathon/naver_hackday/brusta/bridge/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/harryhong/workspace/hackathon/naver_hackday/brusta-work-env/src/brusta/bridge/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,59 +123,59 @@ bridge/fast:
 	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/build
 .PHONY : bridge/fast
 
-bridge.o: bridge.cpp.o
+src/bridge.o: src/bridge.cpp.o
 
-.PHONY : bridge.o
-
-# target to build an object file
-bridge.cpp.o:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/bridge.cpp.o
-.PHONY : bridge.cpp.o
-
-bridge.i: bridge.cpp.i
-
-.PHONY : bridge.i
-
-# target to preprocess a source file
-bridge.cpp.i:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/bridge.cpp.i
-.PHONY : bridge.cpp.i
-
-bridge.s: bridge.cpp.s
-
-.PHONY : bridge.s
-
-# target to generate assembly for a file
-bridge.cpp.s:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/bridge.cpp.s
-.PHONY : bridge.cpp.s
-
-model/DNN.o: model/DNN.cpp.o
-
-.PHONY : model/DNN.o
+.PHONY : src/bridge.o
 
 # target to build an object file
-model/DNN.cpp.o:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/model/DNN.cpp.o
-.PHONY : model/DNN.cpp.o
+src/bridge.cpp.o:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/bridge.cpp.o
+.PHONY : src/bridge.cpp.o
 
-model/DNN.i: model/DNN.cpp.i
+src/bridge.i: src/bridge.cpp.i
 
-.PHONY : model/DNN.i
+.PHONY : src/bridge.i
 
 # target to preprocess a source file
-model/DNN.cpp.i:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/model/DNN.cpp.i
-.PHONY : model/DNN.cpp.i
+src/bridge.cpp.i:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/bridge.cpp.i
+.PHONY : src/bridge.cpp.i
 
-model/DNN.s: model/DNN.cpp.s
+src/bridge.s: src/bridge.cpp.s
 
-.PHONY : model/DNN.s
+.PHONY : src/bridge.s
 
 # target to generate assembly for a file
-model/DNN.cpp.s:
-	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/model/DNN.cpp.s
-.PHONY : model/DNN.cpp.s
+src/bridge.cpp.s:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/bridge.cpp.s
+.PHONY : src/bridge.cpp.s
+
+src/model/DNN.o: src/model/DNN.cpp.o
+
+.PHONY : src/model/DNN.o
+
+# target to build an object file
+src/model/DNN.cpp.o:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/model/DNN.cpp.o
+.PHONY : src/model/DNN.cpp.o
+
+src/model/DNN.i: src/model/DNN.cpp.i
+
+.PHONY : src/model/DNN.i
+
+# target to preprocess a source file
+src/model/DNN.cpp.i:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/model/DNN.cpp.i
+.PHONY : src/model/DNN.cpp.i
+
+src/model/DNN.s: src/model/DNN.cpp.s
+
+.PHONY : src/model/DNN.s
+
+# target to generate assembly for a file
+src/model/DNN.cpp.s:
+	$(MAKE) -f CMakeFiles/bridge.dir/build.make CMakeFiles/bridge.dir/src/model/DNN.cpp.s
+.PHONY : src/model/DNN.cpp.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... bridge"
-	@echo "... bridge.o"
-	@echo "... bridge.i"
-	@echo "... bridge.s"
-	@echo "... model/DNN.o"
-	@echo "... model/DNN.i"
-	@echo "... model/DNN.s"
+	@echo "... src/bridge.o"
+	@echo "... src/bridge.i"
+	@echo "... src/bridge.s"
+	@echo "... src/model/DNN.o"
+	@echo "... src/model/DNN.i"
+	@echo "... src/model/DNN.s"
 .PHONY : help
 
 

@@ -29,3 +29,7 @@ WORKDIR /home/brusta
 
 COPY --from=build-env /home/brusta/bridge/libtorch/ ./libtorch/
 COPY --from=build-env /home/brusta/bridge/libbridge.so ./libbridge.so
+
+RUN mkdir -p libbridge
+COPY --from=build-env /home/brusta/bridge/includes ./libbridge/includes
+COPY --from=build-env /home/brusta/bridge/src ./libbridge/src
