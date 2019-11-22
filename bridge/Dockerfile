@@ -1,10 +1,7 @@
-FROM ubuntu:16.04 AS build-env
+FROM ubuntu:18.04 AS build-env
 
 RUN apt-get update -y
-RUN apt-get install -y wget
-RUN apt-get install -y unzip
-RUN apt-get install -y cmake
-RUN apt-get install -y g++
+RUN apt-get install -y wget unzip cmake g++
 
 RUN mkdir -p /home/brusta/bridge
 WORKDIR /home/brusta/bridge
@@ -23,7 +20,7 @@ RUN cd build && make && mv libbridge.so ../libbridge.so
 
 VOLUME /home/brusta/bridge
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 RUN mkdir -p /home/brusta
 WORKDIR /home/brusta

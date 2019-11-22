@@ -52,7 +52,7 @@ namespace pytorch {
         int outputSize = ((Model*)pModel)->getOutputSize();
 
         vector<float> vectorX (x, x + BATCH_SIZE * inputFeatureSize);
-        vector<float> vectorY = ((Model*)pModel) -> Model::predict(vectorX);
+        vector<float> vectorY = ((Model*)pModel)->predict(vectorX);
 
     	float *y = new float[outputSize];
         for (int i = 0; i < BATCH_SIZE * outputSize; ++i) {

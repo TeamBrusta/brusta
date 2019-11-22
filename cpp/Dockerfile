@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS build-env
+FROM brusta-bridge:latest
 
 RUN apt-get update -y
 RUN apt-get install -y software-properties-common
