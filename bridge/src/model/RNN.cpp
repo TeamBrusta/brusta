@@ -1,6 +1,6 @@
 #include <iostream>
 #include <torch/script.h>
-#include "model.hpp"
+#include <model.hpp>
 
 #define BATCH_SIZE 1
 
@@ -14,25 +14,13 @@ namespace pytorch {
 
     Model::~Model () {}
 
-    int Model::getInputSequenceSize() {
-        return this->inputSequenceSize;
-    }
-
-    int Model::getInputFeatureSize() {
-        return this->inputFeatureSize;
-    }
-
-    int Model::getOutputSize() {
-        return this->outputSize;
-    }
-
     vector<float> Model::predict (vector<float> x) {
-        at::Tensor inputVector = torch::from_blob(&x[0], {BATCH_SIZE, inputFeatureSize}, at::kFloat).clone();
-
+        at::Tensor inputVector = torch::from_blob(&x[0], {BATCH_SIZE, inputSequenceSize, inputFeatureSize}, at::kFloat).clone();
+        
         vector<torch::jit::IValue> inputTensor;
         inputTensor.push_back(inputVector);
 
-        at::Tensor outputTensor = this->module.forward(inputTensor).toTensor();
+        at::Tensor outputTensor = this -> module -> forward(inputTensor).toTensor();
         
         vector<float> outputVector(outputTensor.data_ptr<float>(), outputTensor.data_ptr<float>() + outputTensor.numel());
         return outputVector;
@@ -48,12 +36,13 @@ namespace pytorch {
     }
 
     float* Eval::evaluate(long pModel, float* x) {
-        int inputFeatureSize = ((Model*)pModel)->getInputFeatureSize();
-        int outputSize = ((Model*)pModel)->getOutputSize();
+        int inputSequenceSize = ((Model*)pModel)->inputSequenceSize;
+        int inputFeatureSize = ((Model*)pModel)->inputFeatureSize;
+        int outputSize = ((Model*)pModel)->outputSize;
 
-        vector<float> vectorX (x, x + BATCH_SIZE * inputFeatureSize);
+        vector<float> vectorX (x, x + BATCH_SIZE * inputSequenceSize * inputFeatureSize);
         vector<float> vectorY = ((Model*)pModel) -> Model::predict(vectorX);
-
+        
     	float *y = new float[outputSize];
         for (int i = 0; i < BATCH_SIZE * outputSize; ++i) {
             y[i] = vectorY[i];

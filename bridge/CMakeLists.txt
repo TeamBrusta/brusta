@@ -3,9 +3,11 @@ PROJECT(brusta-bridge)
 
 SET(CMAKE_SHARED_LIBRARY_SUFFIX ".so")
 
+INCLUDE_DIRECTORIES("./includes")
+
 FIND_PACKAGE(Torch REQUIRED)
 
 # MODEL_TYPE should be RNN or DNN.
-ADD_LIBRARY(bridge SHARED bridge.cpp ./model/${MODEL_TYPE}.cpp)
+ADD_LIBRARY(bridge SHARED ./src/bridge.cpp ./src/model/${MODEL_TYPE}.cpp)
 TARGET_LINK_LIBRARIES(bridge "${TORCH_LIBRARIES}")
 SET_PROPERTY(TARGET bridge PROPERTY CXX_STANDARD 11)
