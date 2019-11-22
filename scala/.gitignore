@@ -1,0 +1,8 @@
+.DS_Store
+
+burner/.idea/
+burner/lib/
+burner/logs/
+burner/target/
+burner/project/project/
+burner/project/target/
