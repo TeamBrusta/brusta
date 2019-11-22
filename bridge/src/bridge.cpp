@@ -1,5 +1,5 @@
-#include "model/model.hpp"
-#include "bridge.hpp"
+#include <model.hpp>
+#include <bridge.hpp>
 
 /* JNI */
 
