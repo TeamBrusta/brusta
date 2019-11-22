@@ -17,8 +17,9 @@ ADD . /home/brusta/bridge
 
 ARG MODEL_TYPE=DNN
 
-RUN CMAKE_PREFIX_PATH=./libtorch/share/cmake/Torch cmake -DMODEL_TYPE=${MODEL_TYPE} CMakeLists.txt
-RUN make
+RUN mkdir -p build
+RUN cd build && CMAKE_PREFIX_PATH=../libtorch/share/cmake/Torch cmake -DMODEL_TYPE=${MODEL_TYPE} ..
+RUN cd build && make && mv libbridge.so ../libbridge.so
 
 VOLUME /home/brusta/bridge
 
