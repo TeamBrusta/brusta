@@ -1,7 +1,9 @@
 include_directories(include ../includes)
 
 find_package(jsoncpp CONFIG REQUIRED)
-add_executable(BrustaCPlusPlus
+find_package(Threads)
+add_executable(brusta
 		main.cpp
 		handler.cpp predict.cpp)
-target_link_libraries(BrustaCPlusPlus PRIVATE jsoncpp_lib)
+
+target_link_libraries(brusta ${CMAKE_THREAD_LIBS_INIT} jsoncpp_lib)

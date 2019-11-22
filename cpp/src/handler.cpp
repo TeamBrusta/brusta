@@ -4,14 +4,13 @@
 
 #include "predict.h"
 #include "handler.h"
-#include <iostream>
 
 static std::string VectorJsonify(const std::string& name, const std::vector<int>& input) {
-    std::string ret = "{\"" + name + "\": [";
+    std::string ret = "\"" + name + "\": [";
 
     int sz = input.size();
     for(int i = 0; i < sz; i++) {
-        ret += std::to_string(input[i]) + (i < sz - 1 ? "," : "]}");
+        ret += std::to_string(input[i]) + (i < sz - 1 ? "," : "]");
     }
 
     return ret;
@@ -19,7 +18,6 @@ static std::string VectorJsonify(const std::string& name, const std::vector<int>
 
 void AliveCheckHandler(const httplib::Request& req, httplib::Response& res) {
     res.set_content(R"({"status": "server is now running"})", "application/json");
-    res.status = 400;
 }
 
 void PredictHandler(const httplib::Request& req, httplib::Response& res) {
@@ -27,10 +25,10 @@ void PredictHandler(const httplib::Request& req, httplib::Response& res) {
     std::vector<int> output;
 
     if(!ValidateInput(req.body, inputs)) {
-        res.set_content(R"({"message": "wrong input format", "status": 400})", "application/json");
+        res.set_content(R"({"message": "wrong input format"})", "application/json");
         res.status = 400;
     } else {
         RunModel(inputs, output);
-        res.set_content(VectorJsonify("output", output), "application/json");
+        res.set_content("{" + VectorJsonify("output", output) + "}", "application/json");
     }
 }
