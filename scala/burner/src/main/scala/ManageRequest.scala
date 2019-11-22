@@ -67,6 +67,6 @@ class ManageRequest @Inject()(context: ServerContext,
           Callback.successful(req.badRequest(emptyInputErrorJson, HttpHeaders(jsonHeader)))
         }
       }
- }
+  }
 
 }
