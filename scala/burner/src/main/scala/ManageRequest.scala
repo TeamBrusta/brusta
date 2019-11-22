@@ -52,7 +52,13 @@ class ManageRequest @Inject()(context: ServerContext,
             Callback.successful(req.ok(responseJson, HttpHeaders(jsonHeader)))
           } else {
             val wrongInputErrorJson = """{"status": "error", "code": 400, "message": "vector dimension mismatched"}"""
-            log.info(s"returnFail\u241BmismatchDim\u241BrequestDim=${inputVector.length}\u241BdefinedDim=${inputDim}")
+            log.info(
+              s"returnFail\u241B" +
+                s"mismatchDim\u241B" +
+                s"requestDim=${inputVector.length}\u241B" +
+                s"inputFeatureSize=${inputFeatureSize}\u241B" +
+                s"inputSequenceLength=${inputSequenceSize}"
+            )
             Callback.successful(req.badRequest(wrongInputErrorJson, HttpHeaders(jsonHeader)))
           }
         } else {
