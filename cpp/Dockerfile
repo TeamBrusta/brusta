@@ -11,16 +11,16 @@ WORKDIR /home
 RUN git clone https://github.com/microsoft/vcpkg.git
 RUN /home/vcpkg/bootstrap-vcpkg.sh
 RUN /home/vcpkg/vcpkg install cpp-httplib jsoncpp
-RUN mkdir -p /home/brusta
+RUN mkdir -p /home/brusta/cpp
 
-WORKDIR /home/brusta
-ADD . /home/brusta
+WORKDIR /home/brusta/cpp
+ADD . /home/brusta/cpp
 
 RUN mkdir -p build
-RUN cd build && cmake -DCMAKE_TOOLCHAIN_FILE=/home/vcpkg/scripts/buildsystems/vcpkg.cmake ..
+RUN cd build && cmake -DCMAKE_TOOLCHAIN_FILE=/home/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=/home/brusta/libtorch ..
 RUN cd build && make
 
-WORKDIR /home/brusta/build/src
+WORKDIR /home/brusta/cpp/build/src
 EXPOSE 8080
 
-CMD ["./brusta"]
+# CMD ["./brusta"]

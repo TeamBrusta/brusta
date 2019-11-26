@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
     server.Get("/", AliveCheckHandler);
     server.Post("/predict", PredictHandler);
 
-    server.listen("0.0.0.0", 8080);
+    server.listen("localhost", 8080);
 
     return 0;
 }
